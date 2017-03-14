@@ -1,5 +1,6 @@
 FROM rastasheep/ubuntu-sshd:16.04
 ADD script/slave.sh /home/jenkins/
+COPY settings.xml /root/.m2/settings.xml
 WORKDIR /home/jenkins
 RUN apt-get install -y git unzip vim curl wget maven
 RUN curl -sSL get.docker.com https://get.docker.com/ | sh;
