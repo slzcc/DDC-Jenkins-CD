@@ -192,7 +192,7 @@ under the License.
           <repository>
             <id>nexus</id>
             <name>Nexus Repository</name>
-            <url>http://${${NEXUSSERVER}}:8081/content/groups/public/</url>
+            <url>http:/${NEXUSSERVER}:8081/content/groups/public/</url>
             <releases>
               <enabled>true</enabled>
             </releases>
