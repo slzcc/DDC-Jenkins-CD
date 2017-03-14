@@ -1,7 +1,7 @@
 FROM registry.aliyuncs.com/slzcc/jenkins-slave-dind-java-maven
 ADD script/slave.sh /home/jenkins/
 WORKDIR /home/jenkins
-RUN apt-get autoremove --pruge -y docker-engine && \
+RUN apt-get autoremove --purge -y docker-engine && \
     curl -sSL get.docker.com https://get.docker.com/ | sh; && \
     curl -o /usr/local/docker-compse https://github.com/docker/compose/releases/download/1.11.2/docker-compose-Linux-x86_64 && \
     chmod +x /usr/local/docker-compse
