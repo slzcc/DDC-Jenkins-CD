@@ -1,0 +1,56 @@
+version: '3'
+services:
+  front-end:
+    image: registry.aliyuncs.com/hydsoft/ddc-cicd-demo-front-end
+    ports:
+      - '80:8079'
+    environment:
+      - reschedule=on-node-failure
+  catalogue:
+    image: registry.aliyuncs.com/hydsoft/ddc-cicd-demo-catalogue
+    environment:
+      - reschedule=on-node-failure
+  catalogue-db:
+    image: registry.aliyuncs.com/hydsoft/ddc-cicd-demo-catalogue-db
+    environment:
+      - reschedule=on-node-failure
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=socksdb
+  cart:
+    image: registry.aliyuncs.com/hydsoft/ddc-cicd-demo-cart
+    environment:
+      - reschedule=on-node-failure
+  cart-db:
+    image: mongo
+    environment:
+      - reschedule=on-node-failure
+  orders:
+    image: registry.aliyuncs.com/hydsoft/ddc-cicd-demo-orders
+    environment:
+      - reschedule=on-node-failure
+  orders-db:
+    image: mongo
+    environment:
+      - reschedule=on-node-failure
+  shipping:
+    image: registry.aliyuncs.com/hydsoft/ddc-cicd-demo-shipping
+    environment:
+      - reschedule=on-node-failure
+  rabbitmq:
+    image: rabbitmq:3
+    environment:
+      - reschedule=on-node-failure
+  payment:
+    image: registry.aliyuncs.com/hydsoft/ddc-cicd-demo-payment
+    environment:
+      - reschedule=on-node-failure
+  user:
+    image: registry.aliyuncs.com/hydsoft/ddc-cicd-demo-user
+    environment:
+      - MONGO_HOST=user-db:27017
+      - reschedule=on-node-failure
+  user-db:
+    image: registry.aliyuncs.com/hydsoft/ddc-cicd-demo-user-db
+    environment:
+      - reschedule=on-node-failure

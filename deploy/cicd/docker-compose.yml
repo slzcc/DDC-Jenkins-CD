@@ -1,0 +1,50 @@
+version: "3"
+
+networks:
+  jenkins-cd:
+
+services:
+  jenkins:
+    image: registry.aliyuncs.com/hydsoft/ddc-cicd-jenkins-server:latest
+    ports:
+      - 8080:8080
+    networks:
+      - jenkins-cd
+
+  nexus:
+    image: registry.aliyuncs.com/hydsoft/nexus:latest
+    ports:
+      - 8081:8081
+    networks:
+      - jenkins-cd
+    volumes:
+      - /sonatype-work/storage
+
+  registry:
+    image: registry:latest
+    ports:
+      - 5000:5000
+    networks:
+      - jenkins-cd
+    volumes:
+      - /var/lib/registry
+
+  gogs:
+    image: registry.aliyuncs.com/hydsoft/ddc-cicd-gogs:latest
+    ports:
+      - 3000:3000
+      - 8022:22
+    networks:
+      - jenkins-cd
+    volumes:
+      - /opt/gogs/data
+      - /home/git
+    environment:
+      - DOMAIN=
+
+  sonar:
+    image: sonarqube:latest
+    ports:
+      - 9000:9000
+    networks:
+      - jenkins-cd
