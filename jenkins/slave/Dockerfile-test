@@ -1,4 +1,4 @@
-FROM registry.aliyuncs.com/slzcc/jenkins-slave-dind-java-maven
+FROM slzcc/jenkins-slave-dind-java-maven
 ADD script/slave.sh /home/jenkins/
 COPY settings.xml /root/.m2/settings.xml
 WORKDIR /home/jenkins
