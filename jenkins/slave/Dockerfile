@@ -3,7 +3,7 @@ ADD script/slave.sh /home/jenkins/
 COPY settings.xml /root/.m2/settings.xml
 WORKDIR /home/jenkins
 RUN apt-get install -y software-properties-common && \
-    add-apt-repository ppa:openjdk-r/ppa -y && \
+    add-apt-repository ppa:openjdk-r/ppa && \
     apt-get update && \
     apt-get install -y --no-install-recommends openjdk-8-jre && \
     rm -rf /var/lib/apt/lists/* $$ \
