@@ -2,7 +2,8 @@ FROM rastasheep/ubuntu-sshd:16.04
 ADD script/slave.sh /home/jenkins/
 COPY settings.xml /root/.m2/settings.xml
 WORKDIR /home/jenkins
-RUN add-apt-repository ppa:webupd8team/java && \
+RUN apt-get install -y software-properties-common && \
+    add-apt-repository ppa:webupd8team/java && \
     apt-get update && \
     apt-get install oracle-java8-installer \
     apt-get install -y git unzip vim curl wget maven
