@@ -6,6 +6,7 @@ RUN apt-get install -y software-properties-common && \
     add-apt-repository ppa:openjdk-r/ppa && \
     apt-get update && \
     apt-get install -y --no-install-recommends openjdk-8-jre && \
+    apt-get install openjdk-8-jdk && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get update && \
     apt-get install -y git unzip vim curl wget maven
