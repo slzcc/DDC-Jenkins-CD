@@ -32,8 +32,8 @@ services:
   gogs:
     image: registry.aliyuncs.com/hydsoft/ddc-cicd-gogs:latest
     ports:
-      - 3000:3000
-      - 8022:22
+      - '3000:3000'
+      - '8022:22'
     networks:
       - jenkins-cd
     volumes:
