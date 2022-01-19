@@ -17,7 +17,6 @@ RUN ln -sf /jdk1.8.0_201 /usr/local/jdk &&  \
     ln -sf /apache-maven-3.8.4/bin/mvn /usr/bin/
 
 COPY --from=DockerCli /usr/local/bin/docker /usr/local/bin
-COPY --from=DockerCli /usr/local/bin/ctr /usr/local/bin
 
 ENV MAVEN_VERSION=3.8.4 \
     MAVEN_HOME=/apache-maven-3.8.4 \
@@ -29,4 +28,4 @@ ENV MAVEN_VERSION=3.8.4 \
     JAVA_BIN=/usr/local/jdk/bin \
     JRE_HOME=/usr/local/jdk/jre
 
-ENTRYPOINT ["/bin/sh" "-c" "/usr/local/bin/jenkins-slave"]
+ENTRYPOINT ["sh" "-c" "/usr/local/bin/jenkins-slave"]
