@@ -8,6 +8,10 @@ COPY slave.jar /usr/share/jenkins/slave.jar
 
 COPY jenkins-slave /usr/local/bin/jenkins-slave
 
+COPY --from=DockerCli /usr/local/bin/docker /usr/local/bin
+
+COPY settings.xml /apache-maven-3.8.4/conf/settings.xml
+
 WORKDIR /home/jenkins
 
 RUN wget -qO- https://mirror.shileizcc.com/JDK/jdk-8u201-linux-x64.tar.gz | tar zx -C /
@@ -15,8 +19,6 @@ RUN wget -qO- https://mirror.shileizcc.com/JDK/jdk-8u201-linux-x64.tar.gz | tar 
 RUN ln -sf /jdk1.8.0_201 /usr/local/jdk &&  \
     ln -sf /jdk1.8.0_201/bin/java /usr/bin/ && \
     ln -sf /apache-maven-3.8.4/bin/mvn /usr/bin/
-
-COPY --from=DockerCli /usr/local/bin/docker /usr/local/bin
 
 RUN apt-get update && \
     apt-get install -y git unzip curl wget jq make && \
