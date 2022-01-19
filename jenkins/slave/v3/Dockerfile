@@ -19,7 +19,7 @@ RUN ln -sf /jdk1.8.0_201 /usr/local/jdk &&  \
 COPY --from=DockerCli /usr/local/bin/docker /usr/local/bin
 
 RUN apt-get update && \
-    apt-get install -y git unzip curl wget && \
+    apt-get install -y git unzip curl wget jq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* 
 
